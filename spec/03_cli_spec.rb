@@ -32,13 +32,13 @@ describe './bin/move executing a CLI Application' do
     allow($stdout).to receive(:puts)
 
     allow(self).to receive(:gets).and_return("1")
-    
+
     expect(self).to receive(:input_to_index).and_return(0)
 
     run_file("./bin/move")
   end
 
-  it 'calls move passing the index' do
+   it 'move modifies the board correctly' do
 
     allow($stdout).to receive(:puts)
 
