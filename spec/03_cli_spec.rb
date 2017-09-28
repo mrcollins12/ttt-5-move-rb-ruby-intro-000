@@ -1,5 +1,3 @@
-require_relative "../lib/move.rb"
-
 describe './bin/move executing a CLI Application' do
   it 'defines a board variable' do
     allow($stdout).to receive(:puts)
@@ -28,22 +26,11 @@ describe './bin/move executing a CLI Application' do
     run_file("./bin/move")
   end
 
-  it 'converts the users input to an index' do
-    allow($stdout).to receive(:puts)
-
-    allow(self).to receive(:gets).and_return("1")
-
-    expect(self).to receive(:input_to_index).and_return(0)
-
-    run_file("./bin/move")
-  end
-
-   it 'move modifies the board correctly' do
-
+  it 'calls move passing the user input' do
     allow($stdout).to receive(:puts)
 
     allow(self).to receive(:gets).and_return('1')
-    expect(self).to receive(:move).with(anything, 0, any_args), "Make sure `bin/move` is passing the index, not the input to the `#move` method."
+    expect(self).to receive(:move).with(anything, '1', any_args), "Make sure `bin/move` is passing the user input to the `#move` method."
 
     run_file("./bin/move")
   end
